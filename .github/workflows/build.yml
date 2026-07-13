@@ -6,6 +6,12 @@ on:
     tags: [ 'v*' ]
     paths:
       - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'forge.config.ts'
+      - 'vite.*.config.mts'
+      - 'vitest.config.ts'
+      - 'tsconfig*.json'
       - '.github/workflows/**'
   workflow_dispatch:
     inputs:
@@ -57,7 +63,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # electron 43 requires Node >=22.12; vite 7 requires >=20.19
+          node-version: 22
           cache: npm
 
       - name: Setup Python (node-gyp)

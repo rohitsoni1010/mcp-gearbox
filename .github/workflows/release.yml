@@ -38,7 +38,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          # electron 43 requires Node >=22.12; vite 7 requires >=20.19
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
